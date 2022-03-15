@@ -11,7 +11,6 @@
     <groupId>com.example.Corebot</groupId>
     <artifactId>Telegrambot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Telegrambot</name>
     <description>DemoProjectTeleBot</description>
 
     <properties>
@@ -37,22 +36,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-test</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-base -->
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-base</artifactId>
-            <version>11.0.2</version>
-        </dependency>
 
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
@@ -65,15 +54,15 @@
             <version>5.7.1</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
-            <scope>test</scope>
+            <groupId>org.apache.maven.surefire</groupId>
+            <artifactId>surefire-booter</artifactId>
+            <version>3.0.0-M3</version>
         </dependency>
+
     </dependencies>
 
     <build>
-        <finalName>telebot</finalName>
+        <finalName>botapp</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -83,7 +72,7 @@
                     <assembleDirectory>target</assembleDirectory>
                     <programs>
                         <program>
-                            <mainClass>com.example.Corebot.Main</mainClass>
+                            <mainClass>com.example/Bot.java</mainClass>
                             <name>Telegrambot</name>
                         </program>
                     </programs>
@@ -97,8 +86,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -136,7 +123,7 @@
                 <artifactId>heroku-maven-plugin</artifactId>
                 <version>3.0.3</version>
                 <configuration>
-                    <appName>protected-springs-97661</appName>
+                    <appName>arcane-anchorage-56042</appName>
                 </configuration>
             </plugin>
         </plugins>
