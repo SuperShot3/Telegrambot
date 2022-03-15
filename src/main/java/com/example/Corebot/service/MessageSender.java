@@ -3,13 +3,15 @@ package com.example.Corebot.service;
 import com.example.Corebot.Bot.BotLogic;
 import org.apache.log4j.Logger;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendSticker;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Message;
+import org.telegram.telegrambots.meta.api.objects.Update;
+
 public class MessageSender implements Runnable {
     private static final Logger log = Logger.getLogger(MessageSender.class);
     private BotLogic bot;
-    private final   int SENDER_SLEEP_TIME = 1000;
 
     public MessageSender(BotLogic bot) {
         this.bot = bot;
@@ -24,10 +26,10 @@ public class MessageSender implements Runnable {
                     send(object);
                 }
                 try {
+                    int SENDER_SLEEP_TIME = 10000;
                     Thread.sleep(SENDER_SLEEP_TIME);
                 } catch (InterruptedException e) {
                     log.error("Take interrupt while operate msg list", e);
-                    break;
                 }
             }
         } catch (Exception e) {
@@ -39,6 +41,7 @@ public class MessageSender implements Runnable {
             MessageType messageType = messageType(object);
             switch (messageType) {
                 case EXECUTE :
+                    @SuppressWarnings("unchecked")
                     BotApiMethod<Message> message = (BotApiMethod<Message>) object;
                     log.debug("User Execute for " + object);
                     bot.execute(message);
