@@ -20,7 +20,7 @@ public class BotLogic extends TelegramLongPollingBot {
 
     private static final String TOKEN = System.getenv("TOKEN");
     private static final String BOT_USERNAME = System.getenv("BOT_USERNAME");
-    private static final String PORT = System.getenv("PORT");
+
 
     public BotLogic(String botName,String botToken) {}
 
@@ -61,13 +61,6 @@ public class BotLogic extends TelegramLongPollingBot {
                 return;
             }
             botConnect();
-        }
-        try (ServerSocket serverSocket = new ServerSocket(Integer.valueOf(PORT))) {
-            while (true) {
-                Socket clientSocket = serverSocket.accept();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }
