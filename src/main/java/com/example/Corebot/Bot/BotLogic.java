@@ -7,6 +7,9 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -15,17 +18,22 @@ public class BotLogic extends TelegramLongPollingBot {
     Logger log = Logger.getLogger(BotLogic.class.getName());
     final int RECONNECT_PAUSE = 10000;
 
+    private static final String TOKEN = System.getenv("TOKEN");
+    private static final String BOT_USERNAME = System.getenv("BOT_USERNAME");
+    private static final String PORT = System.getenv("PORT");
+
     public BotLogic(String botName,String botToken) {}
 
     @Override
     public String getBotUsername() {
-        return System.getenv("botName");
+        return System.getenv("BOT_USERNAME");
     }
 
     @Override
     public String getBotToken() {
-        return System.getenv("token");
+        return System.getenv("TOKEN");
     }
+
 
 
     public Queue<Object> sendQueue = new ConcurrentLinkedQueue<>();
@@ -53,6 +61,13 @@ public class BotLogic extends TelegramLongPollingBot {
                 return;
             }
             botConnect();
+        }
+        try (ServerSocket serverSocket = new ServerSocket(Integer.valueOf(PORT))) {
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

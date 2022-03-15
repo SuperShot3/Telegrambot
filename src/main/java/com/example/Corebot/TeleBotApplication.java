@@ -20,7 +20,7 @@ public class TeleBotApplication {
 	public static void main(String[] args) throws TelegramApiException {
 		SpringApplication.run(TeleBotApplication.class, args);
 
-		BotLogic botLogic = new BotLogic(getenv("botName"), getenv("token"));
+		BotLogic botLogic = new BotLogic(getenv("BOT_USERNAME"), getenv("TOKEN"));
 		final int RECONNECT_PAUSE = 10000;
 
 		MessageReceiver messageReceiver = new MessageReceiver(botLogic);
