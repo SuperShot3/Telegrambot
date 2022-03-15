@@ -11,7 +11,7 @@
     <groupId>com.example.Corebot</groupId>
     <artifactId>Telegrambot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>telebot</name>
+    <name>Telegrambot</name>
     <description>DemoProjectTeleBot</description>
 
     <properties>
@@ -141,7 +141,7 @@
                 <artifactId>heroku-maven-plugin</artifactId>
                 <version>3.0.3</version>
                 <configuration>
-                    <appName>konsapp</appName>
+                    <appName>protected-springs-97661</appName>
                 </configuration>
             </plugin>
         </plugins>
