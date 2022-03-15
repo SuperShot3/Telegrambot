@@ -17,7 +17,6 @@ public class BotLogic extends TelegramLongPollingBot {
     private static final String TOKEN = System.getenv("TOKEN");
     private static final String BOT_USERNAME = System.getenv("BOT_USERNAME");
 
-
     public BotLogic(String botName,String botToken) {}
 
     @Override

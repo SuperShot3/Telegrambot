@@ -1,7 +1,6 @@
 package com.example.Corebot.command;
 
 import com.example.Corebot.Bot.BotLogic;
-import com.example.Corebot.TeleBotApplication;
 import org.apache.log4j.Logger;
 import org.glassfish.grizzly.utils.Pair;
 

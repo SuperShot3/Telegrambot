@@ -11,14 +11,15 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import static java.lang.System.getenv;
 
 @SpringBootApplication
-public class TeleBotApplication {
-	private static final Logger log = Logger.getLogger(TeleBotApplication.class.getName());
+public class Main {
+
+	private static final Logger log = Logger.getLogger(Main.class.getName());
 	private static final int PRIORITY_FOR_SENDER = 1;
 	private static final int PRIORITY_FOR_RECEIVER = 3;
 	private static final String BOT_ADMIN = "961020144"; // my ID Mr.K
 
 	public static void main(String[] args) throws TelegramApiException {
-		SpringApplication.run(TeleBotApplication.class, args);
+		SpringApplication.run(Main.class, args);
 
 		BotLogic botLogic = new BotLogic(getenv("BOT_USERNAME"), getenv("TOKEN"));
 		final int RECONNECT_PAUSE = 10000;
