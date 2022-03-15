@@ -8,7 +8,7 @@
         <version>2.6.2</version>
     </parent>
 
-    <groupId>com.example.Corebote</groupId>
+    <groupId>com.example.Corebot</groupId>
     <artifactId>Telegrambot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>telebot</name>
@@ -147,3 +147,4 @@
         </plugins>
     </build>
 </project>
+
