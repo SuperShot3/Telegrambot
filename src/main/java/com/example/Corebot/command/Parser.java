@@ -17,6 +17,7 @@ public class Parser extends BotLogic {
     }
 
     public ParsedCommand getParsedCommand(String text) {
+
         String trimText = "";
         if (text != null) trimText = text.trim();
         ParsedCommand result = new ParsedCommand(Command.NONE, trimText);
@@ -39,12 +40,14 @@ public class Parser extends BotLogic {
     }
 
     private String cutCommandFromFullText(String text) {
+
         return text.contains(DELIMITER_COMMAND_BOTNAME) ?
                 text.substring(1, text.indexOf(DELIMITER_COMMAND_BOTNAME)) :
                 text.substring(1);
     }
 
     private Command getCommandFromText(String text) {
+
         String upperCaseText = text.toUpperCase().trim();
         Command command = Command.NONE;
         try {
@@ -56,8 +59,8 @@ public class Parser extends BotLogic {
     }
 
     private Pair<String,String> getDelimitedCommandFromText(String trimText) {
-        Pair<String,String> commandText;
 
+        Pair<String,String> commandText;
         if (trimText.contains(" ")) {
             int indexOfSpace = trimText.indexOf(" ");
             commandText = new Pair<>(trimText.substring(0, indexOfSpace), trimText.substring(indexOfSpace + 1));

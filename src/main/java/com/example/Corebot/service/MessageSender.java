@@ -48,7 +48,6 @@ public class MessageSender implements Runnable {
                     break;
                 case STICKER :
                     SendSticker sendSticker = new SendSticker();
-                    sendSticker.setSticker(new InputFile("CAACAgIAAxkBAAINXWIl-i_jvQPWOyMkCW3XTi62EJbqAAKEHAACmibhS2lMEncihqguIwQ"));
                     send(sendSticker);
                     log.debug("Use SendSticker for " + object);
                     break;

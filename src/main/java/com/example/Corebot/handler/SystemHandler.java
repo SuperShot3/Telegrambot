@@ -1,11 +1,15 @@
 package com.example.Corebot.handler;
 
+import com.example.Corebot.Ability.Stickers;
 import com.example.Corebot.Bot.BotLogic;
 import com.example.Corebot.command.Command;
 import com.example.Corebot.command.ParsedCommand;
 import org.apache.log4j.Logger;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendSticker;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 
 public class SystemHandler extends AbstractHandler {
@@ -29,7 +33,19 @@ public class SystemHandler extends AbstractHandler {
             case ID:
                 return "Your telegramID: " + update.getMessage().getFrom().getId();
             case STICKER:
-                return "Here is StrikerID: " + parsedCommand.getText();
+                if(parsedCommand.getText().equals("")){
+                    try {
+                        bot.execute(SendSticker.builder()
+                                .chatId(String.valueOf(update.getMessage()
+                                        .getChatId()))
+                                            .sticker(new InputFile("CAACAgIAAxkBAAINXWIl-i_jvQPWOyMkCW3XTi62EJbqAAKEHAACmibhS2lMEncihqguIwQ")).build());
+                    } catch (TelegramApiException e){
+                        log.error(e);
+                    }
+                }else{
+                    return "Here is StrikerID: " + parsedCommand.getText();
+                }
+
         }
         return "";
     }
